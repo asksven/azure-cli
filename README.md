@@ -128,6 +128,21 @@ For example:
 $ docker run -u $(id -u):$(id -g) -v ${HOME}:/home/az -e HOME=/home/az --rm -it azuresdk/azure-cli-python:dev
 ```
 
+### Multi-arch build
+
+To build multi-arch azure-cli docker images:
+
+```
+{
+    export REPOSITORY=<your-repo>/az-cli
+    export VERSION=1
+    export DOCKER_CLI_EXPERIMENTAL=enabled
+    docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
+}
+
+make
+```
+
 ### Edge builds
 
 If you want to get the latest build from the `dev` branch, you can use our "edge" builds.
